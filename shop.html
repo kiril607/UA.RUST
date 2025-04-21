@@ -1,0 +1,195 @@
+<!DOCTYPE html>  
+<html lang="uk">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Магазин | UA.RUST | X2 | MAX6</title>  
+    <link rel="stylesheet" href="shop-style.css">  
+    <style>  
+        /* Додатковий стиль для товарів і кнопок */  
+        .product-item {  
+            border: 1px solid #ccc;  
+            padding: 10px;  
+            margin: 10px 0;  
+        }  
+        .add-to-cart {  
+            background-color: #28a745;  
+            color: white;  
+            border: none;  
+            cursor: pointer;  
+            padding: 5px 10px;  
+            transition: background-color 0.3s;  
+        }  
+        .add-to-cart:hover {  
+            background-color: #218838;  
+        }  
+        /* Стилі для кнопки "Відкрити кошик" */  
+        #open-cart {  
+            background-color: #007bff;  
+            color: white;  
+            border: none;  
+            cursor: pointer;  
+            padding: 10px 15px;  
+            font-size: 16px;  
+            border-radius: 5px; /* Згладжені кути */  
+            transition: background-color 0.3s, transform 0.2s; /* Додаємо плавний перехід */  
+        }  
+        #open-cart:hover {  
+            background-color: #0056b3; /* Темніший відтінок при наведенні */  
+            transform: translateY(-2px); /* Легке підняття кнопки */  
+        }  
+        /* Стилі для модального вікна */  
+        .modal {  
+            display: none;   
+            position: fixed;   
+            z-index: 1000;   
+            left: 0;  
+            top: 0;  
+            width: 100%;   
+            height: 100%;   
+            background-color: rgba(0, 0, 0, 0.5);   
+        }  
+        .modal-content {  
+            background-color: #fefefe;  
+            margin: 15% auto;  
+            padding: 20px;  
+            border: 1px solid #888;  
+            width: 80%;   
+        }  
+        .close-modal {  
+            color: #aaa;  
+            float: right;  
+            font-size: 28px;  
+            font-weight: bold;  
+        }  
+        .close-modal:hover,  
+        .close-modal:focus {  
+            color: black;  
+            text-decoration: none;  
+            cursor: pointer;  
+        }  
+    </style>  
+</head>  
+<body>  
+    <div id="app" class="main-page">  
+        <a href="index.html" class="close-btn" title="На головну сторінку">✖</a>  
+        <div class="shop-container">  
+            <header>  
+                <h1>Магазин UA.RUST | X2 | MAX6</h1>  
+                <p>Обирай найкращі товари для покращення гри!</p>  
+            </header>  
+            <main>  
+                <section class="product-preview page page-enter" id="content">  
+                    <h2>Наші товари</h2>  
+                    <div class="product-item">  
+                        <h3>Набір "Початківець"</h3>  
+                        <p>Цей набір містить основні ресурси для початку гри.</p>  
+                        <p>Ціна: 100 монет</p>  
+                        <button class="add-to-cart" data-name="Набір 'Початківець'" data-price="100">Додати до корзини</button>  
+                    </div>  
+                    <div class="product-item">  
+                        <h3>Ексклюзивна зброя</h3>  
+                        <p>Сильна зброя для просунутих гравців.</p>  
+                        <p>Ціна: 250 монет</p>  
+                        <button class="add-to-cart" data-name="Ексклюзивна зброя" data-price="250">Додати до корзини</button>  
+                    </div>  
+                    <h4>Кошик: <span id="cart-count">0</span> товарів</h4>  
+                    <button id="open-cart" style="margin-top: 10px;">Відкрити кошик</button>  
+                </section>  
+
+                <!-- Модальне вікно для кошика -->  
+                <div id="cart-modal" class="modal">  
+                    <div class="modal-content">  
+                        <span class="close-modal" id="close-modal">&times;</span>  
+                        <h3>Ваш кошик</h3>  
+                        <ul id="cart-items"></ul>  
+                        <p>Кількість товарів: <span id="total-items">0</span></p>  
+                    </div>  
+                </div>  
+            </main>  
+            <footer>  
+                <p>&copy; 2025 UA.RUST | X2 | MAX6. Усі права захищені.</p>  
+            </footer>  
+        </div>  
+    </div>  
+    <script>  
+        document.addEventListener("DOMContentLoaded", function () {  
+            const links = document.querySelectorAll('a');  
+            const content = document.getElementById('content');  
+            const cartCount = document.getElementById('cart-count');  
+            const cartModal = document.getElementById('cart-modal');  
+            const closeModal = document.getElementById('close-modal');  
+            const openCartButton = document.getElementById('open-cart');  
+            const cartItemsList = document.getElementById('cart-items');  
+            const totalItems = document.getElementById('total-items');  
+
+            let cartItemCount = 0; // Лічильник товарів у кошику  
+            let cartItems = []; // Масив для зберігання деталей товарів у кошику  
+
+            // Додати обробник подій для кнопок "Додати до корзини"  
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');  
+
+            addToCartButtons.forEach(button => {  
+                button.addEventListener('click', function () {  
+                    const itemName = this.getAttribute('data-name');  
+                    const itemPrice = this.getAttribute('data-price');  
+                    
+                    // Логіка додавання товару в кошик  
+                    cartItemCount++;  
+                    cartCount.textContent = cartItemCount;  
+
+                    // Додати товар до масиву кошика  
+                    cartItems.push({ name: itemName, price: itemPrice });  
+                    
+                    // Оновлення кошика в модальному вікні  
+                    updateCart();  
+                    
+                    // Сповіщення про додавання товару  
+                    alert(`${itemName} додано до кошика!`);  
+                });  
+            });  
+
+            // Виклик модального вікна кошика  
+            openCartButton.addEventListener('click', function () {  
+                cartModal.style.display = "block";  
+            });  
+
+            // Закриття модального вікна  
+            closeModal.addEventListener('click', function () {  
+                cartModal.style.display = "none";  
+            });  
+
+            // Клік за межами модального вікна також закриває його  
+            window.addEventListener('click', function (event) {  
+                if (event.target == cartModal) {  
+                    cartModal.style.display = "none";  
+                }  
+            });  
+
+            function updateCart() {  
+                // Очищення попередніх товарів у кошику  
+                cartItemsList.innerHTML = "";  
+                cartItems.forEach(item => {  
+                    const listItem = document.createElement('li');  
+                    listItem.textContent = `${item.name} - ${item.price} монет`;  
+                    cartItemsList.appendChild(listItem);  
+                });  
+                totalItems.textContent = cartItems.length; // Оновлення кількості товарів у кошику  
+            }  
+
+            links.forEach(link => {  
+                link.addEventListener('click', function (e) {  
+                    e.preventDefault(); // Зупиняємо звичайне переходження  
+                    const targetUrl = this.getAttribute('href');  
+                    content.classList.add('page-leave');  
+
+                    // Затримка перед переходом на нову сторінку  
+                    setTimeout(() => {  
+                        window.location.href = targetUrl;  
+                    }, 500); // Затримка повинна співпадати з часом анімації  
+                });  
+            });  
+        });  
+    </script>  
+</body>  
+</html>  

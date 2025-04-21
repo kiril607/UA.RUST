@@ -1,0 +1,48 @@
+<!DOCTYPE html>  
+<html lang="uk">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>Сапорт | UA.RUST | X2 | MAX6</title>  
+  <link rel="stylesheet" href="shop-style.css">  
+</head>  
+<body>  
+  <div id="app" class="main-page">  
+    <a href="index.html" class="close-btn" title="На головну сторінку">✖</a>  
+    <div class="shop-container">  
+      <header>  
+        <h1>Стань сапортом</h1>  
+        <p>Хочеш допомагати гравцям та отримувати бонуси? Приєднуйся до нашої команди!</p>  
+      </header>  
+      <main>  
+        <section class="product-preview page page-enter" id="content">  
+          <h2>Форма заявки буде доступна незабаром</h2>  
+          <p>Ми відкриємо набір у сапорт-команду вже найближчим часом.</p>  
+        </section>  
+      </main>  
+      <footer>  
+        <p>&copy; 2025 UA.RUST | X2 | MAX6. Усі права захищені.</p>  
+      </footer>  
+    </div>  
+  </div>  
+  <script>  
+    document.addEventListener("DOMContentLoaded", function () {  
+      const links = document.querySelectorAll('a');  
+      const content = document.getElementById('content');  
+
+      links.forEach(link => {  
+        link.addEventListener('click', function (e) {  
+          e.preventDefault(); // Зупиняємо звичайне переходження  
+          const targetUrl = this.getAttribute('href');  
+          content.classList.add('page-leave');  
+
+          // Затримка перед переходом на нову сторінку  
+          setTimeout(() => {  
+            window.location.href = targetUrl;  
+          }, 500); // Затримка повинна співпадати з часом анімації  
+        });  
+      });  
+    });  
+  </script>  
+</body>  
+</html>  

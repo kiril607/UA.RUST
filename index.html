@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UA.RUST | X2 | MAX6</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="main-page">
+    <section class="hero">
+      <div class="overlay">
+        <h1>УКРАЇНСЬКИЙ ПРОЕКТ UA.RUST | X2 | MAX6</h1>
+        <p>Разом у RUST: українська спільнота чекає на тебе!</p>
+        <p>💙💛Сила в єдності💛💙</p>
+        <div class="buttons">
+          <a href="shop.html" class="hero-btn">МАГАЗИН 🛒</a>
+          <a href="servers.html" class="hero-btn">НАШІ СЕРВЕРИ</a>
+          <a href="https://discord.gg/NeZnc4mu" target="_blank" class="hero-btn">DISCORD</a>
+          <a href="support.html" class="hero-btn">СТАНЬ САПОРТОМ!</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Steam login + список товарів -->
+    <section class="content">
+      <SteamLoginButton />
+      <ManageCart />
+      <ProductList :products="filteredProducts" />
+    </section>
+  </div>
+</body>
+</html>
