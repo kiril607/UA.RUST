@@ -1,195 +1,90 @@
-<!DOCTYPE html>  
-<html lang="uk">  
-<head>  
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>Магазин | UA.RUST | X2 | MAX6</title>  
-    <link rel="stylesheet" href="shop-style.css">  
-    <style>  
-        /* Додатковий стиль для товарів і кнопок */  
-        .product-item {  
-            border: 1px solid #ccc;  
-            padding: 10px;  
-            margin: 10px 0;  
-        }  
-        .add-to-cart {  
-            background-color: #28a745;  
-            color: white;  
-            border: none;  
-            cursor: pointer;  
-            padding: 5px 10px;  
-            transition: background-color 0.3s;  
-        }  
-        .add-to-cart:hover {  
-            background-color: #218838;  
-        }  
-        /* Стилі для кнопки "Відкрити кошик" */  
-        #open-cart {  
-            background-color: #007bff;  
-            color: white;  
-            border: none;  
-            cursor: pointer;  
-            padding: 10px 15px;  
-            font-size: 16px;  
-            border-radius: 5px; /* Згладжені кути */  
-            transition: background-color 0.3s, transform 0.2s; /* Додаємо плавний перехід */  
-        }  
-        #open-cart:hover {  
-            background-color: #0056b3; /* Темніший відтінок при наведенні */  
-            transform: translateY(-2px); /* Легке підняття кнопки */  
-        }  
-        /* Стилі для модального вікна */  
-        .modal {  
-            display: none;   
-            position: fixed;   
-            z-index: 1000;   
-            left: 0;  
-            top: 0;  
-            width: 100%;   
-            height: 100%;   
-            background-color: rgba(0, 0, 0, 0.5);   
-        }  
-        .modal-content {  
-            background-color: #fefefe;  
-            margin: 15% auto;  
-            padding: 20px;  
-            border: 1px solid #888;  
-            width: 80%;   
-        }  
-        .close-modal {  
-            color: #aaa;  
-            float: right;  
-            font-size: 28px;  
-            font-weight: bold;  
-        }  
-        .close-modal:hover,  
-        .close-modal:focus {  
-            color: black;  
-            text-decoration: none;  
-            cursor: pointer;  
-        }  
-    </style>  
-</head>  
-<body>  
-    <div id="app" class="main-page">  
-        <a href="index.html" class="close-btn" title="На головну сторінку">✖</a>  
-        <div class="shop-container">  
-            <header>  
-                <h1>Магазин UA.RUST | X2 | MAX6</h1>  
-                <p>Обирай найкращі товари для покращення гри!</p>  
-            </header>  
-            <main>  
-                <section class="product-preview page page-enter" id="content">  
-                    <h2>Наші товари</h2>  
-                    <div class="product-item">  
-                        <h3>Набір "Початківець"</h3>  
-                        <p>Цей набір містить основні ресурси для початку гри.</p>  
-                        <p>Ціна: 100 монет</p>  
-                        <button class="add-to-cart" data-name="Набір 'Початківець'" data-price="100">Додати до корзини</button>  
-                    </div>  
-                    <div class="product-item">  
-                        <h3>Ексклюзивна зброя</h3>  
-                        <p>Сильна зброя для просунутих гравців.</p>  
-                        <p>Ціна: 250 монет</p>  
-                        <button class="add-to-cart" data-name="Ексклюзивна зброя" data-price="250">Додати до корзини</button>  
-                    </div>  
-                    <h4>Кошик: <span id="cart-count">0</span> товарів</h4>  
-                    <button id="open-cart" style="margin-top: 10px;">Відкрити кошик</button>  
-                </section>  
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Магазин | UA.RUST | X2 | MAX6</title>
+  <link rel="stylesheet" href="shop-style.css">
+</head>
+<body>
+  <a href="index.html" class="close-btn" title="На головну сторінку">✖</a>
 
-                <!-- Модальне вікно для кошика -->  
-                <div id="cart-modal" class="modal">  
-                    <div class="modal-content">  
-                        <span class="close-modal" id="close-modal">&times;</span>  
-                        <h3>Ваш кошик</h3>  
-                        <ul id="cart-items"></ul>  
-                        <p>Кількість товарів: <span id="total-items">0</span></p>  
-                    </div>  
-                </div>  
-            </main>  
-            <footer>  
-                <p>&copy; 2025 UA.RUST | X2 | MAX6. Усі права захищені.</p>  
-            </footer>  
-        </div>  
-    </div>  
-    <script>  
-        document.addEventListener("DOMContentLoaded", function () {  
-            const links = document.querySelectorAll('a');  
-            const content = document.getElementById('content');  
-            const cartCount = document.getElementById('cart-count');  
-            const cartModal = document.getElementById('cart-modal');  
-            const closeModal = document.getElementById('close-modal');  
-            const openCartButton = document.getElementById('open-cart');  
-            const cartItemsList = document.getElementById('cart-items');  
-            const totalItems = document.getElementById('total-items');  
+  <div class="shop-container">
+    <header>
+      <h1>Магазин UA.RUST | X2 | MAX6</h1>
+      <p>Обери предмет і заповни форму для покупки</p>
+    </header>
 
-            let cartItemCount = 0; // Лічильник товарів у кошику  
-            let cartItems = []; // Масив для зберігання деталей товарів у кошику  
+    <main>
+      <div class="item">
+        <h2>VIP Доступ (7 днів)</h2>
+        <p>Отримай переваги на сервері! Ціна: 50 грн</p>
+        <button onclick="openForm('VIP Доступ (7 днів)', 50)">Купити</button>
+      </div>
 
-            // Додати обробник подій для кнопок "Додати до корзини"  
-            const addToCartButtons = document.querySelectorAll('.add-to-cart');  
+      <div class="item">
+        <h2>Epic Набір Зброї</h2>
+        <p>Міць у твоїх руках! Ціна: 100 грн</p>
+        <button onclick="openForm('Epic Набір Зброї', 100)">Купити</button>
+      </div>
+    </main>
 
-            addToCartButtons.forEach(button => {  
-                button.addEventListener('click', function () {  
-                    const itemName = this.getAttribute('data-name');  
-                    const itemPrice = this.getAttribute('data-price');  
-                    
-                    // Логіка додавання товару в кошик  
-                    cartItemCount++;  
-                    cartCount.textContent = cartItemCount;  
+    <!-- Форма покупки -->
+    <div id="buyForm" class="form-popup" style="display: none;">
+      <h3 id="itemName"></h3>
+      <form id="purchaseForm" onsubmit="return submitForm()">
+        <label for="nickname">Стим айді:</label>
+        <input type="text" id="nickname" name="nickname" required>
 
-                    // Додати товар до масиву кошика  
-                    cartItems.push({ name: itemName, price: itemPrice });  
-                    
-                    // Оновлення кошика в модальному вікні  
-                    updateCart();  
-                    
-                    // Сповіщення про додавання товару  
-                    alert(`${itemName} додано до кошика!`);  
-                });  
-            });  
+        <label for="email">Email для підтвердження:</label>
+        <input type="email" id="email" name="email" required>
 
-            // Виклик модального вікна кошика  
-            openCartButton.addEventListener('click', function () {  
-                cartModal.style.display = "block";  
-            });  
+        <input type="hidden" id="item" name="item">
+        <input type="hidden" id="price" name="price">
 
-            // Закриття модального вікна  
-            closeModal.addEventListener('click', function () {  
-                cartModal.style.display = "none";  
-            });  
+        <button type="submit">Підтвердити покупку</button>
+        <button type="button" onclick="closeForm()">Скасувати</button>
+      </form>
+    </div>
 
-            // Клік за межами модального вікна також закриває його  
-            window.addEventListener('click', function (event) {  
-                if (event.target == cartModal) {  
-                    cartModal.style.display = "none";  
-                }  
-            });  
+    <!-- Кнопка Monobank -->
+    <div id="monoLink" style="display:none; text-align:center; margin-top:20px;">
+      <a href="https://send.monobank.ua/jar/7r3vUVtTQ" target="_blank" class="pay-btn">💳 Оплатити через Monobank</a>
+    </div>
 
-            function updateCart() {  
-                // Очищення попередніх товарів у кошику  
-                cartItemsList.innerHTML = "";  
-                cartItems.forEach(item => {  
-                    const listItem = document.createElement('li');  
-                    listItem.textContent = `${item.name} - ${item.price} монет`;  
-                    cartItemsList.appendChild(listItem);  
-                });  
-                totalItems.textContent = cartItems.length; // Оновлення кількості товарів у кошику  
-            }  
+    <footer>
+      <p>&copy; 2025 Liberty Rust</p>
+    </footer>
 
-            links.forEach(link => {  
-                link.addEventListener('click', function (e) {  
-                    e.preventDefault(); // Зупиняємо звичайне переходження  
-                    const targetUrl = this.getAttribute('href');  
-                    content.classList.add('page-leave');  
+    <!-- СКРИПТ -->
+    <script>
+      function openForm(itemName, itemPrice) {
+        document.getElementById("itemName").innerText = itemName + " — " + itemPrice + " грн";
+        document.getElementById("item").value = itemName;
+        document.getElementById("price").value = itemPrice;
+        document.getElementById("buyForm").style.display = "block";
+        document.getElementById("monoLink").style.display = "none"; // ховаємо Monobank-кнопку
+      }
 
-                    // Затримка перед переходом на нову сторінку  
-                    setTimeout(() => {  
-                        window.location.href = targetUrl;  
-                    }, 500); // Затримка повинна співпадати з часом анімації  
-                });  
-            });  
-        });  
-    </script>  
-</body>  
-</html>  
+      function closeForm() {
+        document.getElementById("buyForm").style.display = "none";
+        document.getElementById("monoLink").style.display = "none";
+      }
+
+      function submitForm() {
+        const nickname = document.getElementById("nickname").value.trim();
+        const item = document.getElementById("item").value;
+
+        if (nickname === "") {
+          alert("Будь ласка, введіть Steam ID");
+          return false;
+        }
+
+        alert(`✅ Дякуємо, ${nickname}!\nВи замовили: ${item}\n\n➡️ Тепер натисніть кнопку нижче, щоб оплатити через Monobank.`);
+
+        document.getElementById("monoLink").style.display = "block";
+        return false; // не оновлювати сторінку
+      }
+    </script>
+  </div>
+</body>
+</html>

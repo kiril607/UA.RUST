@@ -91,3 +91,58 @@ footer {
     background-color: #ff3333;  
     transform: scale(1.1); /* Збільшуємо кнопку при наведенні */  
 }  
+
+
+.item {
+    background-color: #2a2a2a;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    max-width: 500px;
+    text-align: center;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #00aa88;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .form-popup {
+    display: none;
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 40px auto;
+    border: 1px solid #555;
+  }
+  
+  input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+  }
+  
+
+  .pay-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #ffdd00;
+    color: #000;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  .pay-btn:hover {
+    background-color: #ffc400;
+  }
+  

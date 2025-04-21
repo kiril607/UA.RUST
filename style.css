@@ -8,7 +8,7 @@
 /* Стилі для героїчного розділу */
 .hero {
     height: 100vh;
-    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoGcL1um09Iz3mnNTt_7iQYEzv8E6qYmldcQ&s') no-repeat center center;
+    background: url('https://liberty-rust.com.ua/images/bg.jpg') no-repeat center center;
     background-size: cover;
     position: relative;
     display: flex;

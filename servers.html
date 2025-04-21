@@ -1,48 +1,126 @@
-<!DOCTYPE html>  
-<html lang="uk">  
-<head>  
-  <meta charset="UTF-8">  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-  <title>Сервери | UA.RUST | X2 | MAX6</title>  
-  <link rel="stylesheet" href="shop-style.css">  
-</head>  
-<body>  
-  <div id="app" class="main-page">  
-    <a href="index.html" class="close-btn" title="На головну сторінку">✖</a>  
-    <div class="shop-container">  
-      <header>  
-        <h1>Наші сервери</h1>  
-        <p>Ознайомся з доступними ігровими серверами проекту UA.RUST | X2 | MAX6!</p>  
-      </header>  
-      <main>  
-        <section class="product-preview page page-enter" id="content">  
-          <h2>Сервери скоро будуть показані</h2>  
-          <p>Наша команда готує список найкращих серверів. Слідкуй за оновленнями!</p>  
-        </section>  
-      </main>  
-      <footer>  
-        <p>&copy; 2025 UA.RUST | X2 | MAX6. Усі права захищені.</p>  
-      </footer>  
-    </div>  
-  </div>  
-  <script>  
-    document.addEventListener("DOMContentLoaded", function () {  
-      const links = document.querySelectorAll('a');  
-      const content = document.getElementById('content');  
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Сервери | UA.RUST | X2 | MAX6</title>
+  <link rel="stylesheet" href="shop-style.css">
+  <style>
+    .server-card {
+      position: relative;
+      margin: 30px auto;
+      max-width: 500px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.85);
+      color: white;
+      border-radius: 10px;
+      font-family: Arial, sans-serif;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    }
 
-      links.forEach(link => {  
-        link.addEventListener('click', function (e) {  
-          e.preventDefault(); // Зупиняємо звичайне переходження  
-          const targetUrl = this.getAttribute('href');  
-          content.classList.add('page-leave');  
+    .server-card h2 {
+      text-align: center;
+      letter-spacing: 5px;
+      margin-bottom: 10px;
+    }
 
-          // Затримка перед переходом на нову сторінку  
-          setTimeout(() => {  
-            window.location.href = targetUrl;  
-          }, 500); // Затримка повинна співпадати з часом анімації  
-        });  
-      });  
-    });  
-  </script>  
-</body>  
-</html>  
+    .server-name {
+      font-weight: bold;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .wipe-info, .connect-info {
+      text-align: center;
+      font-size: 14px;
+      margin: 5px 0;
+    }
+
+    .progress-bar {
+      margin-top: 15px;
+      height: 25px;
+      background: #ccc;
+      border-radius: 12.5px;
+      overflow: hidden;
+    }
+
+    .progress {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(to right, #00d5ff, #0044ff);
+      color: white;
+      text-align: center;
+      line-height: 25px;
+      transition: width 0.5s;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" class="main-page">
+    <a href="index.html" class="close-btn" title="На головну сторінку">✖</a>
+    <div class="shop-container">
+      <header>
+        <h1>Наші сервери</h1>
+        <p>Ознайомся з доступними ігровими серверами проекту UA.RUST | X2 | MAX6!</p>
+      </header>
+
+      <!-- Блок з сервером -->
+      <div class="server-card">
+        <h2>НАШІ СЕРВЕРИ</h2>
+        <div class="server-name">UA.RUST | X2 | MAX6</div>
+        <div class="wipe-info">( ВАЙП ЩОЧЕТВЕРГА )</div>
+        <div class="connect-info">217.77.210.236:28180</div>
+        <div class="progress-bar">
+          <div class="progress" id="playerCount">Завантаження...</div>
+        </div>
+      </div>
+
+      <main>
+        <section class="product-preview page page-enter" id="content">
+          <h2>Сервери скоро будуть показані</h2>
+          <p>Наша команда готує список найкращих серверів. Слідкуй за оновленнями!</p>
+        </section>
+      </main>
+
+      <footer>
+        <p>&copy; 2025 UA.RUST | X2 | MAX6. Усі права захищені.</p>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const links = document.querySelectorAll('a');
+      const content = document.getElementById('content');
+
+      links.forEach(link => {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetUrl = this.getAttribute('href');
+          content.classList.add('page-leave');
+          setTimeout(() => {
+            window.location.href = targetUrl;
+          }, 500);
+        });
+      });
+
+      // Отримати дані з BattleMetrics
+      const serverId = "407367a5-a336-4ff4-8323-f65d2a7563b7"; // Замініть на свій ID
+      fetch(`https://api.battlemetrics.com/servers/${serverId}`)
+        .then(res => res.json())
+        .then(data => {
+          const players = data.data.attributes.players;
+          const max = data.data.attributes.maxPlayers;
+          const percentage = (players / max) * 100;
+          const progress = document.getElementById('playerCount');
+
+          progress.textContent = `${players} / ${max}`;
+          progress.style.width = `${percentage}%`;
+        })
+        .catch(() => {
+          document.getElementById('playerCount').textContent = 'Недоступно';
+        });
+    });
+  </script>
+</body>
+</html>
