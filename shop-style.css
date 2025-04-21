@@ -1,148 +1,171 @@
-body {  
-    font-family: Arial, sans-serif;  
-    background-color: #1e1e1e;  
-    color: #f0f0f0;  
-    margin: 0;  
-    padding: 0;  
-    animation: fadeIn 0.5s ease-in; /* Додаємо анімацію для body */  
-}  
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  animation: fadeIn 0.5s ease-in;
+}
 
-@keyframes fadeIn {  
-    from {  
-        opacity: 0;  
-    }  
-    to {  
-        opacity: 1;  
-    }  
-}  
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
-.shop-container {  
-    display: flex;  
-    flex-direction: column;  
-    align-items: center;  
-    text-align: center;  
-    padding: 40px 20px;  
-}  
+.shop-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+}
 
-header h1 {  
-    font-size: 36px;  
-    margin-bottom: 10px;  
-    animation: slideIn 0.5s ease forwards; /* Додаємо анімацію заголовку */  
-}  
+header h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  animation: slideIn 0.5s ease forwards;
+}
 
-@keyframes slideIn {  
-    from {  
-        transform: translateY(-20px);  
-        opacity: 0;  
-    }  
-    to {  
-        transform: translateY(0);  
-        opacity: 1;  
-    }  
-}  
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
-header p {  
-    font-size: 18px;  
-    color: #cccccc;  
-    animation: fadeIn 0.5s 0.3s ease forwards; /* Додаємо анімацію до параграфа */  
-}  
+header p {
+  font-size: 18px;
+  color: #cccccc;
+  animation: fadeIn 0.5s 0.3s ease forwards;
+}
 
-.product-preview {  
-    margin-top: 40px;  
-    max-width: 600px;  
-    transition: transform 0.3s; /* Додаємо плавний перехід до продукту */  
-}  
+.product-preview {
+  margin-top: 40px;
+  max-width: 600px;
+  transition: transform 0.3s;
+}
 
-.product-preview:hover {  
-    transform: scale(1.05); /* Збільшуємо продукт при наведені */  
-}  
+.product-preview:hover {
+  transform: scale(1.05);
+}
 
-.product-preview h2 {  
-    font-size: 28px;  
-    margin-bottom: 15px;  
-}  
+.product-preview h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
 
-.product-preview p {  
-    font-size: 16px;  
-    color: #bbbbbb;  
-}  
+.product-preview p {
+  font-size: 16px;
+  color: #bbbbbb;
+}
 
-footer {  
-    margin-top: 60px;  
-    font-size: 14px;  
-    color: #888888;  
-    animation: fadeIn 0.5s 0.5s ease forwards; /* Анімація для футера */  
-}  
+footer {
+  margin-top: 60px;
+  font-size: 14px;
+  color: #888888;
+  animation: fadeIn 0.5s 0.5s ease forwards;
+}
 
-.close-btn {  
-    position: absolute;  
-    top: 20px;  
-    right: 20px;  
-    font-size: 28px;  
-    color: #f0f0f0;  
-    text-decoration: none;  
-    background-color: #444;  
-    padding: 5px 10px;  
-    border-radius: 5px;  
-    transition: background-color 0.3s, transform 0.3s; /* Додаємо перехід */  
-}  
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 28px;
+  color: #f0f0f0;
+  text-decoration: none;
+  background-color: #444;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+}
 
-.close-btn:hover {  
-    background-color: #ff3333;  
-    transform: scale(1.1); /* Збільшуємо кнопку при наведенні */  
-}  
+.close-btn:hover {
+  background-color: #ff3333;
+  transform: scale(1.1);
+}
 
+.form-popup {
+  display: none;
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: 40px auto;
+  border: 1px solid #555;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+}
+
+.pay-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #ffdd00;
+  color: #000;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.pay-btn:hover {
+  background-color: #ffc400;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 40px;
+  animation: fadeIn 0.6s ease-in-out;
+}
 
 .item {
-    background-color: #2a2a2a;
-    padding: 20px;
-    margin: 20px auto;
-    border-radius: 10px;
-    max-width: 500px;
-    text-align: center;
-  }
-  
-  button {
-    padding: 10px 20px;
-    background-color: #00aa88;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .form-popup {
-    display: none;
-    background-color: #1e1e1e;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 400px;
-    margin: 40px auto;
-    border: 1px solid #555;
-  }
-  
-  input {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: none;
-    border-radius: 5px;
-  }
-  
+  background-color: #1c1145;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
 
-  .pay-btn {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #ffdd00;
-    color: #000;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-  }
-  
-  .pay-btn:hover {
-    background-color: #ffc400;
-  }
-  
+.item img {
+  width: 100%;
+  max-width: 150px;
+  margin: 0 auto 10px;
+  border-radius: 10px;
+}
+
+.item h3 {
+  color: #3fff7b;
+  margin-bottom: 5px;
+}
+
+.item button {
+  background: #1368f5;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 25px;
+  font-weight: bold;
+  margin-top: 15px;
+  color: white;
+  cursor: pointer;
+}
+
+.item button:hover {
+  background: #0e4ec4;
+}
