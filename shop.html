@@ -45,6 +45,42 @@
     button:hover {
       background-color: #0056b3;
     }
+
+    /* Модальне вікно */
+    #detailsModal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      padding: 40px;
+      box-sizing: border-box;
+    }
+
+    #detailsModal div {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #1a1a2e;
+      padding: 20px;
+      border-radius: 10px;
+      overflow-y: auto;
+      max-height: 90vh;
+    }
+
+    .highlight-btn {
+      margin: 20px;
+      padding: 10px 15px;
+      background-color: #ffc107;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .highlight-btn:hover {
+      background-color: #e0a800;
+    }
   </style>
 </head>
 <body>
@@ -57,38 +93,56 @@
     </header>
 
     <main>
-       <!-- Перший ряд -->
-  <div class="item">
-    <img src="https://freedom-ua-rust.com/storage/packages/n1OgIiJpJaoXX23EaQJrsuufSjftuPu4Wjp38poI.webp" alt="" width="150">
-    <h2>VIP Доступ (7 днів)</h2>
-    <p>Отримай переваги на сервері! Ціна: 25 грн</p>
-    <button onclick="openForm('VIP Доступ (7 днів)', 25)">Купити</button>
-  </div>
+      <!-- Перший ряд -->
+      <div class="item">
+        <img src="https://freedom-ua-rust.com/storage/packages/n1OgIiJpJaoXX23EaQJrsuufSjftuPu4Wjp38poI.webp" alt="" width="150">
+        <h2>VIP Доступ (7 днів)</h2>
+        <p>Отримай переваги на сервері! Ціна: 25 грн</p>
+        <button onclick="openForm('VIP Доступ (7 днів)', 25)">Купити</button>
+      </div>
 
-  <div class="item">
-    <img src="https://freedom-ua-rust.com/storage/packages/n1OgIiJpJaoXX23EaQJrsuufSjftuPu4Wjp38poI.webp" alt="" width="150">
-    <h2>VIP Доступ (14 днів)</h2>
-    <p>Міць у твоїх руках! Ціна: 45 грн</p>
-    <button onclick="openForm('VIP Доступ (14 днів)', 45)">Купити</button>
-  </div>
+      <div class="item">
+        <img src="https://freedom-ua-rust.com/storage/packages/n1OgIiJpJaoXX23EaQJrsuufSjftuPu4Wjp38poI.webp" alt="" width="150">
+        <h2>VIP Доступ (14 днів)</h2>
+        <p>Міць у твоїх руках! Ціна: 45 грн</p>
+        <button onclick="openForm('VIP Доступ (14 днів)', 45)">Купити</button>
+      </div>
 
-  <div class="item">
-    <img src="https://freedom-ua-rust.com/storage/packages/n1OgIiJpJaoXX23EaQJrsuufSjftuPu4Wjp38poI.webp" alt="" width="150">
-    <h2>VIP Доступ (21 день)</h2>
-    <p>Максимум бонусів! Ціна: 65 грн</p>
-    <button onclick="openForm('VIP Доступ (21 день)', 65)">Купити</button>
-  </div>
+      <div class="item">
+        <img src="https://freedom-ua-rust.com/storage/packages/n1OgIiJpJaoXX23EaQJrsuufSjftuPu4Wjp38poI.webp" alt="" width="150">
+        <h2>VIP Доступ (21 день)</h2>
+        <p>Максимум бонусів! Ціна: 65 грн</p>
+        <button onclick="openForm('VIP Доступ (21 день)', 65)">Купити</button>
+      </div>
 
-  <div class="item">
-    <img src="https://freedom-ua-rust.com/storage/packages/n1OgIiJpJaoXX23EaQJrsuufSjftuPu4Wjp38poI.webp" alt="" width="150">
-    <h2>VIP Доступ (28 днів)</h2>
-    <p>Повний місяць VIP! Ціна: 85 грн</p>
-    <button onclick="openForm('VIP Доступ (28 днів)', 85)">Купити</button>
-  </div>
-
-
- 
+      <div class="item">
+        <img src="https://freedom-ua-rust.com/storage/packages/n1OgIiJpJaoXX23EaQJrsuufSjftuPu4Wjp38poI.webp" alt="" width="150">
+        <h2>VIP Доступ (28 днів)</h2>
+        <p>Повний місяць VIP! Ціна: 85 грн</p>
+        <button onclick="openForm('VIP Доступ (28 днів)', 85)">Купити</button>
+      </div>
     </main>
+
+    <!-- Кнопка детальніше -->
+    <button onclick="openDetails()" class="highlight-btn">Детальніше</button>
+
+    <!-- Модальне вікно -->
+    <div id="detailsModal">
+      <div>
+        <h2 style="color:#ffcc00;">Переваги VIP</h2>
+        <ul>
+          <li>Рейти добування ресурсів, компонентів, кар'єрів: <strong>x1.3</strong></li>
+          <li>Верстак працює в усьому будинку</li>
+          <li>Метаболізм: завжди ситі</li>
+          <li>Незламні інструменти, броня, зброя, картки доступу</li>
+          <li>Нескінченний балон для дайвінгу</li>
+          <li>Швидке сортування ящиків та холодильників</li>
+        </ul>
+        <h3 style="color:#ff6666;">Набір раз на 24 години:</h3>
+        <img src="https://i.ibb.co/DQ70HkR/image-4.png" alt="VIP Набір" style="width:100%; border-radius:10px; margin-top:10px;">
+        <button onclick="closeDetails()" style="margin-top:20px; background-color:#007bff; color:white; padding:10px 15px; border:none; border-radius:5px;">Закрити</button>
+      </div>
+    </div>
 
     <!-- Форма покупки -->
     <div id="buyForm" class="form-popup" style="display: none;">
@@ -117,7 +171,7 @@
       <p>&copy; 2025 Liberty Rust</p>
     </footer>
 
-    <!-- СКРИПТ -->
+    <!-- JS -->
     <script>
       function openForm(itemName, itemPrice) {
         document.getElementById("itemName").innerText = itemName + " — " + itemPrice + " грн";
@@ -141,11 +195,21 @@
           return false;
         }
 
-        alert(`✅ Дякуємо, ${nickname}!\nВи замовили: ${item}\n\n➡️ Тепер натисніть кнопку нижче, щоб оплатити через Monobank.
-        Обовязко в коментарях коли будете закидувать гроші на банку напишіть привілегію і стим айди!!!`);
+        alert(`✅ Дякуємо, ${nickname}!
+Ви замовили: ${item}
+
+➡️ Тепер натисніть кнопку нижче, щоб оплатити через Monobank.`);
 
         document.getElementById("monoLink").style.display = "block";
         return false;
+      }
+
+      function openDetails() {
+        document.getElementById("detailsModal").style.display = "block";
+      }
+
+      function closeDetails() {
+        document.getElementById("detailsModal").style.display = "none";
       }
     </script>
   </div>
