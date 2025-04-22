@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
   <meta charset="UTF-8">
   <title>Магазин | UA.RUST | X2 | MAX6</title>
@@ -25,7 +26,7 @@
       border-radius: 10px;
       text-align: center;
       width: 200px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     }
 
     .item img {
@@ -50,8 +51,10 @@
     #detailsModal {
       display: none;
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background: rgba(0, 0, 0, 0.7);
       z-index: 1000;
       padding: 40px;
@@ -83,6 +86,7 @@
     }
   </style>
 </head>
+
 <body>
   <a href="index.html" class="close-btn" title="На головну сторінку">✖</a>
 
@@ -95,38 +99,42 @@
     <main>
       <!-- Перший ряд -->
       <div class="item">
-        <img src="https://freedom-ua-rust.com/storage/packages/n1OgIiJpJaoXX23EaQJrsuufSjftuPu4Wjp38poI.webp" alt="" width="150">
+        <img src="https://freedom-ua-rust.com/storage/packages/n1OgIiJpJaoXX23EaQJrsuufSjftuPu4Wjp38poI.webp" alt=""
+          width="150">
         <h2>VIP Доступ (7 днів)</h2>
         <p>Отримай переваги на сервері! Ціна: 25 грн</p>
         <button onclick="openForm('VIP Доступ (7 днів)', 25)">Купити</button>
       </div>
 
       <div class="item">
-        <img src="https://freedom-ua-rust.com/storage/packages/n1OgIiJpJaoXX23EaQJrsuufSjftuPu4Wjp38poI.webp" alt="" width="150">
+        <img src="https://freedom-ua-rust.com/storage/packages/n1OgIiJpJaoXX23EaQJrsuufSjftuPu4Wjp38poI.webp" alt=""
+          width="150">
         <h2>VIP Доступ (14 днів)</h2>
         <p>Міць у твоїх руках! Ціна: 45 грн</p>
         <button onclick="openForm('VIP Доступ (14 днів)', 45)">Купити</button>
       </div>
 
       <div class="item">
-        <img src="https://freedom-ua-rust.com/storage/packages/n1OgIiJpJaoXX23EaQJrsuufSjftuPu4Wjp38poI.webp" alt="" width="150">
+        <img src="https://freedom-ua-rust.com/storage/packages/n1OgIiJpJaoXX23EaQJrsuufSjftuPu4Wjp38poI.webp" alt=""
+          width="150">
         <h2>VIP Доступ (21 день)</h2>
         <p>Максимум бонусів! Ціна: 65 грн</p>
         <button onclick="openForm('VIP Доступ (21 день)', 65)">Купити</button>
       </div>
 
       <div class="item">
-        <img src="https://freedom-ua-rust.com/storage/packages/n1OgIiJpJaoXX23EaQJrsuufSjftuPu4Wjp38poI.webp" alt="" width="150">
+        <img src="https://freedom-ua-rust.com/storage/packages/n1OgIiJpJaoXX23EaQJrsuufSjftuPu4Wjp38poI.webp" alt=""
+          width="150">
         <h2>VIP Доступ (28 днів)</h2>
         <p>Повний місяць VIP! Ціна: 85 грн</p>
         <button onclick="openForm('VIP Доступ (28 днів)', 85)">Купити</button>
       </div>
     </main>
 
-    <!-- Кнопка детальніше -->
+
     <button onclick="openDetails()" class="highlight-btn">Детальніше</button>
 
-    <!-- Модальне вікно -->
+
     <div id="detailsModal">
       <div>
         <h2 style="color:#ffcc00;">Переваги VIP</h2>
@@ -139,79 +147,163 @@
           <li>Швидке сортування ящиків та холодильників</li>
         </ul>
         <h3 style="color:#ff6666;">Набір раз на 24 години:</h3>
-        <img src="https://i.ibb.co/DQ70HkR/image-4.png" alt="VIP Набір" style="width:100%; border-radius:10px; margin-top:10px;">
-        <button onclick="closeDetails()" style="margin-top:20px; background-color:#007bff; color:white; padding:10px 15px; border:none; border-radius:5px;">Закрити</button>
+        <img src="https://i.ibb.co/DQ70HkR/image-4.png" alt="VIP Набір"
+          style="width:100%; border-radius:10px; margin-top:10px;">
+        <button onclick="closeDetails()"
+          style="margin-top:20px; background-color:#007bff; color:white; padding:10px 15px; border:none; border-radius:5px;">Закрити</button>
       </div>
     </div>
 
-    <!-- Форма покупки -->
-    <div id="buyForm" class="form-popup" style="display: none;">
-      <h3 id="itemName"></h3>
-      <form id="purchaseForm" onsubmit="return submitForm()">
-        <label for="nickname">Стим айді:</label>
-        <input type="text" id="nickname" name="nickname" required>
+    <main>
 
-        <label for="email">Email для підтвердження:</label>
-        <input type="email" id="email" name="email" required>
+      <main>
 
-        <input type="hidden" id="item" name="item">
-        <input type="hidden" id="price" name="price">
 
-        <button type="submit">Підтвердити покупку</button>
-        <button type="button" onclick="closeForm()">Скасувати</button>
-      </form>
-    </div>
+        <div class="item">
+          <img src="https://freedom-ua-rust.com/storage/packages/bLchW85UI61uGFEVsVg5bpdC8OULV4eaMwnmJTCu.png" alt=""
+            width="150">
+          <h2>PREMIUM</h2>
+          <p>PREMIUM 7 ДНІВ 25грн</p>
+          <button onclick="openForm(' PREMIUM Доступ (7 днів)', 25)">Купити</button>
+        </div>
 
-    <!-- Кнопка Monobank -->
-    <div id="monoLink" style="display:none; text-align:center; margin-top:20px;">
-      <a href="https://send.monobank.ua/jar/7r3vUVtTQ" target="_blank" class="pay-btn">💳 Оплатити через Monobank</a>
-    </div>
+        <div class="item">
+          <img src="https://freedom-ua-rust.com/storage/packages/bLchW85UI61uGFEVsVg5bpdC8OULV4eaMwnmJTCu.png" alt=""
+            width="150">
+          <h2>PREMIUM</h2>
+          <p>PREMIUM 14 ДНІВ 65грн
 
-    <footer>
-      <p>&copy; 2025 Liberty Rust</p>
-    </footer>
+          </p>
+          <button onclick="openForm('PREMIUM Доступ (14 днів)', 45)">Купити</button>
+        </div>
 
-    <!-- JS -->
-    <script>
-      function openForm(itemName, itemPrice) {
-        document.getElementById("itemName").innerText = itemName + " — " + itemPrice + " грн";
-        document.getElementById("item").value = itemName;
-        document.getElementById("price").value = itemPrice;
-        document.getElementById("buyForm").style.display = "block";
-        document.getElementById("monoLink").style.display = "none";
-      }
 
-      function closeForm() {
-        document.getElementById("buyForm").style.display = "none";
-        document.getElementById("monoLink").style.display = "none";
-      }
 
-      function submitForm() {
-        const nickname = document.getElementById("nickname").value.trim();
-        const item = document.getElementById("item").value;
+        <div class="item">
+          <img src="https://freedom-ua-rust.com/storage/packages/bLchW85UI61uGFEVsVg5bpdC8OULV4eaMwnmJTCu.png" alt=""
+            width="150">
+          <h2>PREMIUM</h2>
+          <p>PREMIUM 21 ДНІВ 95грн</p>
+          <button onclick="openForm('PREMIUM Доступ (21 день)', 65)">Купити</button>
+        </div>
 
-        if (nickname === "") {
-          alert("Будь ласка, введіть Steam ID");
-          return false;
-        }
 
-        alert(`✅ Дякуємо, ${nickname}!
-Ви замовили: ${item}
 
-➡️ Тепер натисніть кнопку нижче, щоб оплатити через Monobank.`);
+        <div style="text-align: center; width: 100%; margin: 20px 0;">
+          <button onclick="openDetails()" class="highlight-btn">Детальніше</button>
+        </div>
 
-        document.getElementById("monoLink").style.display = "block";
+
+        <div id="detailsModal">
+          <div>
+            <h2 style="color:#00ffcc;">Переваги PREMIUM</h2>
+            <p style="color:#999;">Пишайтесь своєю підтримкою <strong style="color:#ffff00;">українського
+                ком'юніті!</strong></p>
+            <ul>
+              <li>Рейти добування ресурсів: <strong style="color:#ff4444;">x1.5</strong></li>
+              <li>Рейти добування компонентів: <strong style="color:#ff4444;">x1.5</strong></li>
+              <li>Рейти добування кар'єрів: <strong style="color:#ff4444;">x1.5</strong></li>
+              <li>Верстак працює у всьому будинку</li>
+              <li>Метаболізм: прокидайтесь завжди ситими</li>
+              <li>Незламні інструменти (лише одна потрібна)</li>
+              <li>Незламна броня та зброя</li>
+              <li>Незламні картки доступу (потрібна лише одна)</li>
+              <li>Нескінченний балон для дайвінгу</li>
+              <li>Швидке сортування інвентарю в ящиках та холодильниках</li>
+            </ul>
+
+            <h3 style="color:#ff3333;">Набір можна забрати раз на 24 години:</h3>
+            <img src="URL_ВАШОГО_ЗОБРАЖЕННЯ" alt="PREMIUM Набір"
+              style="width:100%; border-radius:10px; margin-top:10px;">
+            <button onclick="closeDetails()"
+              style="margin-top:20px; background-color:#007bff; color:white; padding:10px 15px; border:none; border-radius:5px;">Закрити</button>
+          </div>
+        </div>
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+  </main>
+
+
+
+
+  <div id="buyForm" class="form-popup" style="display: none;">
+    <h3 id="itemName"></h3>
+    <form id="purchaseForm" onsubmit="return submitForm()">
+      <label for="nickname">Стим айді:</label>
+      <input type="text" id="nickname" name="nickname" required>
+
+      <label for="email">Email для підтвердження:</label>
+      <input type="email" id="email" name="email" required>
+
+      <input type="hidden" id="item" name="item">
+      <input type="hidden" id="price" name="price">
+
+      <button type="submit">Підтвердити покупку</button>
+      <button type="button" onclick="closeForm()">Скасувати</button>
+    </form>
+
+
+
+  </div>
+
+
+  <div id="monoLink" style="display:none; text-align:center; margin-top:20px;">
+    <a href="https://send.monobank.ua/jar/7r3vUVtTQ" target="_blank" class="pay-btn">💳 Оплатити через Monobank</a>
+  </div>
+
+
+
+
+  <script>
+    function openForm(itemName, itemPrice) {
+      document.getElementById("itemName").innerText = itemName + " — " + itemPrice + " грн";
+      document.getElementById("item").value = itemName;
+      document.getElementById("price").value = itemPrice;
+      document.getElementById("buyForm").style.display = "block";
+      document.getElementById("monoLink").style.display = "none";
+    }
+
+    function closeForm() {
+      document.getElementById("buyForm").style.display = "none";
+      document.getElementById("monoLink").style.display = "none";
+    }
+
+    function submitForm() {
+      const nickname = document.getElementById("nickname").value.trim();
+      const item = document.getElementById("item").value;
+
+      if (nickname === "") {
+        alert("Будь ласка, введіть Steam ID");
         return false;
       }
 
-      function openDetails() {
-        document.getElementById("detailsModal").style.display = "block";
-      }
+      alert(`✅ Дякуємо, ${nickname}!\nВи замовили: ${item}\n\n➡️ Тепер натисніть кнопку нижче, щоб оплатити через Monobank.`);
 
-      function closeDetails() {
-        document.getElementById("detailsModal").style.display = "none";
-      }
-    </script>
+
+      document.getElementById("monoLink").style.display = "block";
+      return false;
+    }
+
+    function openDetails() {
+      document.getElementById("detailsModal").style.display = "block";
+    }
+
+    function closeDetails() {
+      document.getElementById("detailsModal").style.display = "none";
+    }
+  </script>
   </div>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +16,7 @@
       color: white;
       border-radius: 10px;
       font-family: Arial, sans-serif;
-      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     }
 
     .server-card h2 {
@@ -30,7 +31,8 @@
       text-align: center;
     }
 
-    .wipe-info, .connect-info {
+    .wipe-info,
+    .connect-info {
       text-align: center;
       font-size: 14px;
       margin: 5px 0;
@@ -55,6 +57,7 @@
     }
   </style>
 </head>
+
 <body>
   <div id="app" class="main-page">
     <a href="index.html" class="close-btn" title="На головну сторінку">✖</a>
@@ -105,7 +108,7 @@
       });
 
       // Отримати дані з BattleMetrics
-      const serverId = "407367a5-a336-4ff4-8323-f65d2a7563b7"; // Замініть на свій ID
+      const serverId = "407367a5-a336-4ff4-8323-f65d2a7563b7";
       fetch(`https://api.battlemetrics.com/servers/${serverId}`)
         .then(res => res.json())
         .then(data => {
@@ -123,4 +126,5 @@
     });
   </script>
 </body>
+
 </html>

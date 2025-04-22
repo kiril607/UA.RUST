@@ -11,6 +11,7 @@ body {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -35,6 +36,7 @@ header h1 {
     transform: translateY(-20px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -168,4 +170,31 @@ input {
 
 .item button:hover {
   background: #0e4ec4;
+}
+
+
+
+
+
+
+
+.cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.item {
+  background-color: #121223;
+  color: white;
+  width: 23%;
+  min-width: 220px;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }

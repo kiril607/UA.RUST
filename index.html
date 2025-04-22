@@ -1,33 +1,88 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UA.RUST | X2 | MAX6</title>
+  <meta name="description" content="Український RUST проект | Сервери | Магазин | Discord">
+  <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/vue@3"></script>
 </head>
-<body>
-  <div class="main-page">
-    <section class="hero">
-      <div class="overlay">
-        <h1>УКРАЇНСЬКИЙ ПРОЕКТ UA.RUST | X2 | MAX6</h1>
-        <p>Разом у RUST: українська спільнота чекає на тебе!</p>
-        <p>💙💛Сила в єдності💛💙</p>
-        <div class="buttons">
-          <a href="shop.html" class="hero-btn">МАГАЗИН 🛒</a>
-          <a href="servers.html" class="hero-btn">НАШІ СЕРВЕРИ</a>
-          <a href="https://discord.gg/NeZnc4mu" target="_blank" class="hero-btn">DISCORD</a>
-          <a href="support.html" class="hero-btn">СТАНЬ САПОРТОМ!</a>
-        </div>
-      </div>
-    </section>
 
-    <!-- Steam login + список товарів -->
-    <section class="content">
-      <SteamLoginButton />
-      <ManageCart />
-      <ProductList :products="filteredProducts" />
-    </section>
+<body>
+  <div id="app">
+    <div class="steam-login-wrapper">
+
+      {% if user %}
+      <div class="profile-info">
+        <p>Ти увійшов як SteamID: {{ user.steamid }}</p>
+        <a href="/logout" class="hero-btn">Вийти</a>
+      </div>
+      {% else %}
+
+      <div class="login">
+        <button class="steam-login-btn" @click="loginWithSteam">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg" alt="Steam"
+            class="steam-icon" />
+          Увійти через Steam
+        </button>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="main-page">
+      <section class="hero">
+        <div class="overlay">
+          <h1>УКРАЇНСЬКИЙ ПРОЕКТ UA.RUST | X2 | MAX6</h1>
+          <p>Разом у RUST: українська спільнота чекає на тебе!</p>
+          <p>💙💛Сила в єдності💛💙</p>
+          <div class="buttons">
+            <a href="shop.html" class="hero-btn">МАГАЗИН 🛒</a>
+            <a href="servers.html" class="hero-btn">НАШІ СЕРВЕРИ</a>
+            <a href="https://discord.gg/NeZnc4mu" target="_blank" class="hero-btn">DISCORD</a>
+            <a href="support.html" class="hero-btn">СТАНЬ СПОНСООРОМ!</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="content">
+        <SteamLoginButton />
+        <ManageCart />
+        <ProductList :products="filteredProducts" />
+      </section>
+    </div>
   </div>
+
+  <script>
+    const { createApp } = Vue;
+
+    const app = createApp({
+      data() {
+        return {
+          user: null,
+          filteredProducts: []
+        };
+      },
+      methods: {
+        loginWithSteam() {
+
+          window.location.href = "/login";
+        }
+      },
+      components: {
+        SteamLoginButton,
+        ManageCart,
+        ProductList
+      }
+    });
+
+
+    app.config.compilerOptions.delimiters = ['[[', ']]'];
+
+    app.mount('#app');
+  </script>
 </body>
+
 </html>
